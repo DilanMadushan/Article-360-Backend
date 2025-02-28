@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE `article` MODIFY `title` LONGTEXT NOT NULL,
+    MODIFY `image` LONGTEXT NOT NULL,
+    MODIFY `content` LONGTEXT NOT NULL;
