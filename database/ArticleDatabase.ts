@@ -58,3 +58,24 @@ export const updateArticle = async(article:ArticleModle)=>{
         console.log(e);
     }
 }
+
+export const DeteteArticle = async(title: string)=>{
+    try{
+        const articles = await articleClient.findFirst({
+            where: {
+                title:title
+            }
+        });
+        
+        await articleClient.deleteMany({
+            where: {
+                title: title
+            }
+        });
+
+        return articles;
+        
+    }catch(e){
+        console.log(e);
+    }
+};

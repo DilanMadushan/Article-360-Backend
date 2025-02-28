@@ -2,7 +2,7 @@ import { Router } from "express";
 import ArticleModle from "../model/ArticlModel";
 import { log } from "console";
 import express from 'express';
-import { saveArticle,getArticle, getArticleByTitle,updateArticle } from "../database/ArticleDatabase";
+import { saveArticle,getArticle, getArticleByTitle,updateArticle,DeteteArticle } from "../database/ArticleDatabase";
 
 const router = Router();
 
@@ -25,6 +25,11 @@ router.get('/:title', async(req, res) => {
 router.put('/', async(req, res) => {
     const article:ArticleModle = req.body;
     res.json(await updateArticle(article));
+});
+
+router.delete('/:title', async(req, res) => {
+    const title = req.params.title;
+    res.json(await DeteteArticle(title));
 });
 
 export default router;
